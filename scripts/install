@@ -96,10 +96,6 @@ chown -R "$app:$app" "$backuppath"
 #=================================================
 ynh_script_progression "Restoring database..."
 
-#cp "$backup_path/etc/postgresql/17/main/pg_hba.conf" "/etc/postgresql/15/main/pg_hba.conf"
-
-#ynh_psql_db_shell <<< "ALTER USER $db_user CREATEDB;"
-
 ynh_psql_db_shell <<< "
 ALTER SYSTEM SET shared_buffers = '8GB';
 ALTER SYSTEM SET max_wal_size = '20GB';
@@ -223,8 +219,6 @@ proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=CACHE:10m inactive=7d max
 
 ### MASTODON YNH EXTRAS END
 EOF
-
-
 
 # Create a dedicated NGINX config using the conf/nginx.conf template
 ynh_config_add_nginx
