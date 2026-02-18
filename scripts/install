@@ -98,9 +98,9 @@ ynh_script_progression "Restoring database..."
 
 #cp "$backup_path/etc/postgresql/17/main/pg_hba.conf" "/etc/postgresql/15/main/pg_hba.conf"
 
-ynh_psql_db_shell <<< "ALTER USER $db_user CREATEDB;"
+#ynh_psql_db_shell <<< "ALTER USER $db_user CREATEDB;"
 
-ynh_exec_as_app pg_restore -Fc -j$(getconf _NPROCESSORS_ONLN) -U $db_user -P $db_pwd -n public --no-owner --role=mastodon -d $db_name $dbdumppath
+pg_restore -Fc -j$(getconf _NPROCESSORS_ONLN) -U $db_user -P $db_pwd -n public --no-owner --role=mastodon -d $db_name $dbdumppath
 
 #=================================================
 # ADD A CONFIGURATION
