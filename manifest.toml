@@ -47,6 +47,11 @@ ram.runtime = "500M"
     #[install.admin]
     #type = "user"'
 
+    [install.backuppath]
+    ask.en = "Full path to backup folder"
+    help.en = "/path/to/folder"
+    type = "string"
+
     [install.dbdumppath]
     ask.en = "Full path to db dump"
     help.en = "/path/to/file"
