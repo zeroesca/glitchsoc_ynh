@@ -100,7 +100,7 @@ ynh_script_progression "Restoring database..."
 
 #ynh_psql_db_shell <<< "ALTER USER $db_user CREATEDB;"
 
-PGPASSWORD="$db_pwd" pg_restore -c -j$(getconf _NPROCESSORS_ONLN) -U $db_user -n public --no-owner --role=mastodon -d $db_name $dbdumppath
+PGPASSWORD="$db_pwd" pg_restore -j$(getconf _NPROCESSORS_ONLN) -U $db_user -n public --no-owner --role=mastodon -d $db_name $dbdumppath
 
 #=================================================
 # ADD A CONFIGURATION
