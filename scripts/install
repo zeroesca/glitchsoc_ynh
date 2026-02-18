@@ -107,6 +107,8 @@ ALTER SYSTEM SET synchronous_commit = 'off';
 SELECT pg_reload_conf();
 "
 
+systemctl restart postgresql
+
 PGPASSWORD="$db_pwd" PGOPTIONS="-c maintenance_work_mem=4GB -c work_mem=64MB" pg_restore -j$(getconf _NPROCESSORS_ONLN) -U $db_user -n public --no-owner --role=mastodon -d $db_name $dbdumppath
 
 ynh_psql_db_shell <<< "
